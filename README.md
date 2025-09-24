@@ -84,8 +84,8 @@ npm start
 
   Método   Ruta                 Descripción
   -------- -------------------- ----------------------
-  POST     /api/auth/register   Registro de usuarios
-  POST     /api/auth/login      Login en el sistema
+ - POST     /api/auth/register   Registro de usuarios
+ - POST     /api/auth/login      Login en el sistema
 
 ### Convocatorias
 
