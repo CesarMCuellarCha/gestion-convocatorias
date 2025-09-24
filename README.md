@@ -84,37 +84,37 @@ npm start
 
   Método   Ruta                 Descripción
   -------- -------------------- ----------------------
- - POST     /api/auth/register   Registro de usuarios
- - POST     /api/auth/login      Login en el sistema
+ - POST     /api/auth/register:    Registro de usuarios
+ - POST     /api/auth/login: .      Login en el sistema
 
 ### Convocatorias
 
   Método   Ruta                     Descripción
   -------- ------------------------ ----------------------------------
-  POST     /api/convocatorias       Crear convocatoria (con archivo)
-  GET      /api/convocatorias       Listar todas las convocatorias
-  GET      /api/convocatorias/:id   Obtener convocatoria por ID
-  PUT      /api/convocatorias/:id   Actualizar convocatoria
-  DELETE   /api/convocatorias/:id   Eliminar convocatoria
+-  POST     /api/convocatorias:        Crear convocatoria (con archivo)
+-  GET      /api/convocatorias:        Listar todas las convocatorias
+-  GET      /api/convocatorias/:id:    Obtener convocatoria por ID
+-  PUT      /api/convocatorias/:id:    Actualizar convocatoria
+-  DELETE   /api/convocatorias/:id:   Eliminar convocatoria
 
 ### Tipos de Convocatoria
 
   Método   Ruta                         Descripción
   -------- ---------------------------- ------------------------------
-  POST     /api/tipoconvocatorias       Crear tipo de convocatoria
-  GET      /api/tipoconvocatorias       Listar tipos de convocatoria
-  GET      /api/tipoconvocatorias/:id   Obtener tipo por ID
-  PUT      /api/tipoconvocatorias/:id   Actualizar tipo
-  DELETE   /api/tipoconvocatorias/:id   Eliminar tipo
+-  POST     /api/tipoconvocatorias:       Crear tipo de convocatoria
+-  GET      /api/tipoconvocatorias:      Listar tipos de convocatoria
+-  GET      /api/tipoconvocatorias/:id:   Obtener tipo por ID
+-  PUT      /api/tipoconvocatorias/:id:   Actualizar tipo
+-  DELETE   /api/tipoconvocatorias/:id:   Eliminar tipo
 
 ### Postulaciones
 
   -----------------------------------------------------------------------------
   Método                Ruta                 Descripción
   --------------------- -------------------- ----------------------------------
-  POST                  /api/postulaciones   Crear postulación (Aprendices)
+-  POST                  /api/postulaciones:  Crear postulación (Aprendices)
 
-  GET                   /api/postulaciones   Ver todas las postulaciones
+-  GET                   /api/postulaciones:   Ver todas las postulaciones
                                              (Funcionarios)
   -----------------------------------------------------------------------------
 
@@ -123,10 +123,10 @@ npm start
   ---------------------------------------------------------------------------------------
   Método                Ruta                           Descripción
   --------------------- ------------------------------ ----------------------------------
-  POST                  /api/resultados                Crear/actualizar resultado
+-  POST                  /api/resultados:                Crear/actualizar resultado
                                                        (Funcionarios)
 
-  GET                   /api/resultados/mi-resultado   Ver resultado personal
+-  GET                   /api/resultados/mi-resultado:   Ver resultado personal
                                                        (Aprendices)
   ---------------------------------------------------------------------------------------
 
@@ -134,15 +134,15 @@ npm start
 
   Método   Ruta                   Descripción
   -------- ---------------------- ---------------------------
-  GET      /api/usuarios          Listar usuarios (Líderes)
-  GET      /api/usuarios/perfil   Ver perfil del usuario
+-  GET      /api/usuarios:          Listar usuarios (Líderes)
+-  GET      /api/usuarios/perfil:   Ver perfil del usuario
 
 ### Funcionarios & Aprendices
 
   Método   Ruta                Descripción
   -------- ------------------- ---------------------
-  GET      /api/funcionarios   Listar funcionarios
-  GET      /api/aprendices     Listar aprendices
+-  GET      /api/funcionarios:   Listar funcionarios
+-  GET      /api/aprendices:     Listar aprendices
 
 ------------------------------------------------------------------------
 
@@ -177,14 +177,33 @@ Este proyecto está bajo la licencia **MIT**.
 
 ### Autenticación
 
-**Registro de Usuario**
+**Registro de Usuario tipo Instructor**
 
     POST /api/auth/register
     Body (JSON):
-    {
-      "nombre": "Juan",
-      "email": "juan@example.com",
-      "password": "123456"
+    {      
+      "username": "cccuellar@gmail.com",
+      "correo": "ccuellar@gmail.com",
+      "identificacion": "5555",
+      "nombre":"César",
+      "apellido":"Cuéllar",
+      "rol": "Funcionario",
+      "funCargo": "Instructor"
+    }
+
+**Registro de Usuario tipo Aprendiz**
+
+    POST /api/auth/register
+    Body (JSON):
+    {      
+      "username": "rosa@gmail.com",
+      "correo": "rosa@gmail.com",
+      "identificacion": "66666",
+      "nombre":"Monik",
+      "apellido":"Galindo",
+      "rol": "Aprendiz",
+      "aprficha": "30000",
+      "aprPrograma": "ADSO"     
     }
 
 **Login de Usuario**
@@ -192,7 +211,7 @@ Este proyecto está bajo la licencia **MIT**.
     POST /api/auth/login
     Body (JSON):
     {
-      "email": "juan@example.com",
+      "username": "juan@example.com",
       "password": "123456"
     }
 
@@ -208,8 +227,11 @@ Este proyecto está bajo la licencia **MIT**.
 
     Body (form-data):
     conDocumento: archivo.pdf
-    nombre: Convocatoria Prueba
-    descripcion: Convocatoria para aprendices
+    conNombre: Convocatoria Prueba
+    conCantidadBenficiarios: 5
+    conFechaInicial: 2025-09-10
+    conFechafinal: 2025-09-20
+    conTipoId: 2
 
 **Obtener todas las convocatorias**
 
@@ -230,8 +252,8 @@ Este proyecto está bajo la licencia **MIT**.
     Authorization: Bearer <token>
     Body (JSON):
     {
-      "nombre": "Convocatoria Actualizada",
-      "descripcion": "Nueva descripción"
+      "conNombre": "Convocatoria Actualizada",
+      "conCantidadBenficiarios": 10
     }
 
 **Eliminar convocatoria**
@@ -251,7 +273,7 @@ Este proyecto está bajo la licencia **MIT**.
     Authorization: Bearer <token>
     Body (JSON):
     {
-      "nombre": "Tipo A"
+      "tipNombre": "Tipo A"
     }
 
 **Listar tipos**
@@ -267,7 +289,7 @@ Este proyecto está bajo la licencia **MIT**.
     Authorization: Bearer <token>
     Body (JSON):
     {
-      "nombre": "Tipo Actualizado"
+      "tipNombre": "Tipo Actualizado"
     }
 
 **Eliminar tipo**
@@ -288,7 +310,9 @@ Este proyecto está bajo la licencia **MIT**.
     Body (JSON):
     {
       "convocatoriaId": 1,
-      "aprendizId": 2
+      "user":{
+        "id": 1
+      }
     }
 
 **Ver todas las postulaciones**
