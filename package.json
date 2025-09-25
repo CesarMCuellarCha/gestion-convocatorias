@@ -2,7 +2,7 @@
   "name": "convocatorias_node",
   "version": "1.0.0",
   "main": "server.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -21,6 +21,8 @@
     "multer": "^2.0.2",
     "mysql2": "^3.15.0",
     "nodemailer": "^7.0.6",
-    "sequelize": "^6.37.7"
+    "sequelize": "^6.37.7",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
   }
 }

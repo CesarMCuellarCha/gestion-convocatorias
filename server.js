@@ -1,5 +1,11 @@
 import 'dotenv/config'
 import express from 'express'
+import swaggerUi from 'swagger-ui-express'
+
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
+const swaggerFile = require('./swagger_output.json')
+//import swaggerFile from './swagger_output.json' assert { type: 'json' }
 import cors from 'cors'
 import sequelize from './config/database.js'
 //import de rutas
@@ -21,8 +27,6 @@ import TipoConvocatoria from './models/tipoConvocatoria.js'
 import Convocatoria from './models/convocatoria.js'
 import Postulacion from './models/postulacion.js'
 import ResultadoPostulacion from './models/resultadoPostulacion.js'
-import Usuario from './models/usuario.js'
-import TipoConvocatoria from './models/tipoConvocatoria.js'
 
 
 // Crear un objeto 'models' para pasar a las funciones de asociación
@@ -68,6 +72,7 @@ app.use('/api/funcionarios', funcionarioRoutes)
 app.use('/api/postulaciones', postulacionRoutes)
 app.use('/api/resultados', resultadoPostulacionRoutes)
 app.use('/api/tipoconvocatorias', tipoConvocatoriaRoutes)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
