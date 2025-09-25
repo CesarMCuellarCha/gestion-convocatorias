@@ -34,6 +34,8 @@ CTPI desarrollada en **Node.js** con **MySQL** utilizando el ORM
     .env              # Variables de entorno
     server.js         # Punto de entrada principal
     package.json      # Dependencias y scripts del proyecto
+    swagger.js        # configuración para documentar la api
+    swagger_output.json #generao al ejecutor con node swagger.js
 
 ------------------------------------------------------------------------
 
@@ -144,7 +146,13 @@ npm start
 -  GET      /api/funcionarios:   Listar funcionarios
 -  GET      /api/aprendices:     Listar aprendices
 
+### Swagger documentación de la api
+
+  Método   Ruta                Descripción
+  -------- ------------------- ---------------------
+-  GET      /api-docs:   Documentar la api
 ------------------------------------------------------------------------
+
 
 ## 🔒 Autenticación
 
