@@ -19,6 +19,7 @@ CTPI desarrollada en **Node.js** con **MySQL** utilizando el ORM
 -   **Multer**
 -   **Jsonwebtoken**
 -   **Generate-password**
+-   **Swagger.js**
 
 ------------------------------------------------------------------------
 
@@ -75,7 +76,7 @@ npm install
 npm run dev
 
 # Producción
-npm start
+npm run start
 ```
 
 ------------------------------------------------------------------------
